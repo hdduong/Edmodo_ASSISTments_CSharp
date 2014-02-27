@@ -12,6 +12,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace connectToASSISTments_1.ASSISTmentsJob
 {
@@ -33,6 +34,27 @@ namespace connectToASSISTments_1.ASSISTmentsJob
 
             return reportHandler;
 
+        }
+
+        public static string getHTMLReport(string reportHandler, string onBehalfOf)
+        {
+            string assingmentReport = string.Format("{2}/user_login?partner=Hien-Ref&access={0}&on_success={1}&on_failure=yahoo.com", onBehalfOf, reportHandler, Global.ASSITmentsAPI_Helper);
+            
+            var restClient = new RestClient(assingmentReport);
+            var request = new RestRequest(Method.GET);
+            
+            RestResponse response = (RestResponse)restClient.Execute(request);
+            
+            string data = response.Content;
+            return data;
+        }
+
+        public static int numberStudentsDidAssignment(string reportData)
+        {
+            string text = @"Not started";
+            int numberStudents = Regex.Matches(reportData, text).Count;
+
+            return numberStudents;
         }
     }
 }

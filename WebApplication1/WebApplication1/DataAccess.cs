@@ -259,7 +259,7 @@ namespace connectToASSISTments_1
             dataConnection.ConnectionString = connectionString;
             dataConnection.Open();
 
-            string commandStr = "INSERT INTO tblRefTable (school_ref) VALUES " + "'" + school_ref + "'";
+            string commandStr = "INSERT INTO tblRefTable (school_ref) VALUES " + "('" + school_ref + "')";
 
             OleDbCommand dataCommand = new OleDbCommand(commandStr, dataConnection);
 
@@ -721,6 +721,37 @@ namespace connectToASSISTments_1
             dataConnection.Close();
 
             return teacherToken;
+
+        }
+
+        public static int countNumberOfStudentInGroup()
+        {
+
+            string student_counter = "";
+
+            string connectionString =
+                          @"Provider=Microsoft.ACE.OLEDB.12.0;" +
+                          @"Data Source=D:\EdmodoData_1.accdb;" +
+                          @"Persist Security Info=False;";
+
+            OleDbConnection dataConnection = new OleDbConnection();
+            dataConnection.ConnectionString = connectionString;
+            dataConnection.Open();
+
+            string commandStr = "SELECT COUNT(edmodo_user_token) AS student_counter FROM tblUsers WHERE user_type='STUDENT'";
+            OleDbCommand dataCommand = new OleDbCommand(commandStr, dataConnection);
+
+            OleDbDataReader myReader = dataCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                student_counter = myReader["student_counter"].ToString();
+
+            }
+
+            dataConnection.Close();
+
+            return Convert.ToInt32(student_counter) ;
 
         }
     }

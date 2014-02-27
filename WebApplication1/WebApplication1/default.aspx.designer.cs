@@ -22,6 +22,24 @@ namespace connectToASSISTments_1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// lblChooseAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChooseAction;
+        
+        /// <summary>
+        /// lblNumberStudentsDidAssignment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumberStudentsDidAssignment;
+        
+        /// <summary>
         /// teacherTutor1 control.
         /// </summary>
         /// <remarks>

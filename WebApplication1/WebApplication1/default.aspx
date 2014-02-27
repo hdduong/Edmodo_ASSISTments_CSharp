@@ -12,10 +12,11 @@
     <div>
     
     </div>
-        <h2> Please choose an action: </h2>
+        <asp:Label id="lblChooseAction" runat="server"><h2 > Please choose an action: </h2></asp:Label>
+        <asp:Label ID="lblNumberStudentsDidAssignment" runat="server"></asp:Label> <br />
         <asp:LinkButton  ID="teacherTutor1" runat="server" OnClick="teacherTutor1_Click" Text="Test Drive" /> <br />
         <asp:LinkButton  ID="teacherReport1" runat="server" OnClick="teacherReport1_Click" Text="Report" /> <br />
-        <asp:LinkButton  ID="viewProblem" runat="server" OnClick="goToViewProlem" Text="View Problems" /> <br />
+        <!-- <asp:LinkButton  ID="viewProblem" runat="server" OnClick="goToViewProlem" Text="View Problems" /> <br /> -->
         
     </form>
 </body>

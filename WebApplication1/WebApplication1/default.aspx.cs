@@ -285,13 +285,41 @@ namespace connectToASSISTments_1
                                 Response.Write("NOT Enrolled because user_ref " + classUser.Current.user + " already in class! <br /> ");
                         }
 
+                        this.lblChooseAction.Visible = true;
+
+                        string reportHandler = Report.getReportHandler(assignmentRef,onBehalfOf);
+                        string reportContent = Report.getHTMLReport(reportHandler, onBehalfOf);
+                        int numberStudentsDidAssignment = Report.numberStudentsDidAssignment(reportContent);
+                        int numberStudents = DataAccess.countNumberOfStudentInGroup();
+                        
+                        // there is a check to display smart "label"
+                        //1. No one does the assignment --> not show teacherReport
+                        if (numberStudents == (numberStudentsDidAssignment - 1))
+                        {
+                            this.teacherTutor1.Visible = true;
+                            this.teacherReport1.Visible = false;
+                        }
+                        else
+                        {
+                            //2. At least one student --> show there is 1 student were complete the report
+                            string tempInfo = string.Format("Please notice that There are {0} students did the assignment!", (numberStudents - (numberStudentsDidAssignment - 1)).ToString());
+                            Response.Write("\n");
+                            this.teacherReport1.Visible = true;
+                            this.teacherTutor1.Visible = true;
+                            this.lblNumberStudentsDidAssignment.Visible = true;
+                            this.lblNumberStudentsDidAssignment.Text = tempInfo;
+                        }
                         break;
                 }
 
             } 
-            else //if (Request.QueryString["launch_key"] != null)
+            else //if (Request.QueryString["launch_key"] == null)
             {
-                
+                //run from debug
+                this.teacherReport1.Visible = false;
+                this.teacherTutor1.Visible = false;
+                this.lblNumberStudentsDidAssignment.Visible = false;
+                this.lblChooseAction.Visible = false;
             } // end if user_token
             
 
@@ -376,11 +404,12 @@ namespace connectToASSISTments_1
             ASSISTmentsUserLogin(edmodoUserType, OnBehalfOf, linkToGo);
         }
 
-
+        
         protected void goToViewProlem(Object sender, EventArgs e)
         {
             Response.Redirect("default.aspx");
         }
+        
 
         protected void teacherReport1_Click(Object sender, EventArgs e)
         {

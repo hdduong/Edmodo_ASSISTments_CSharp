@@ -26,12 +26,12 @@ namespace connectToASSISTments_1.ASSISTmentsJob
             string createUserURL = String.Format("{0}/user", Global.ASSITmentsBaseAPI);
 
             string postData = "{" + "\"" + "userType" + "\"" + ":" + "\"" + "proxy" + "\"" + "," +
-                                    "\"" + "username" + "\"" + ":" + "\"" + "1" + username + "\"" + "," +
+                                    "\"" + "username" + "\"" + ":" + "\"" + username + "\"" + "," +
                                     "\"" + "password" + "\"" + ":" + "\"" + password + "\"" + "," +
-                                    "\"" + "email" + "\"" + ":" + "\"" + "1" + firstname + lastname + "@junk.com" + "\"" + "," +
+                                    "\"" + "email" + "\"" + ":" + "\"" + "4" + firstname + lastname + "@junk.com" + "\"" + "," +
                                     "\"" + "firstName" + "\"" + ":" + "\"" + firstname + "\"" + "," +
                                     "\"" + "lastName" + "\"" + ":" + "\"" + lastname + "\"" + "," +
-                                    "\"" + "displayName" + "\"" + ":" + "\"" + firstname + " " + lastname + "\"" + "," +
+                                    "\"" + "displayName" + "\"" + ":" + "\"" + "4" + firstname + " " + lastname + "\"" + "," +
                                     "\"" + "timeZone" + "\"" + ":" + "\"" + "GMT-4" + "\"" + "," +
                                     "\"" + "registrationCode" + "\"" + ":" + "\"" + "HIEN-API" + "\"" + "}";
             byte[] byteArray = Encoding.ASCII.GetBytes(postData);

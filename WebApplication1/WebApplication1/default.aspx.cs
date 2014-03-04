@@ -117,8 +117,10 @@ namespace connectToASSISTments_1
                                     DataAccess.addEdmodoStudent(studentUserType, studentToken, studentFirstName, studentLastName, edmodoGroupId);
 
                                     //create account in ASSISTments
-                                    string studentUsername = studentFirstName + studentLastName;
+                                    string studentUsername = "4" + studentFirstName + studentLastName;
                                     studentRef = ProxyUser.CreateUser(studentToken,studentFirstName,studentLastName, Global.password, studentUsername);
+                                    string studentOnBehalfOf = ProxyUser.activateProxyUser(studentRef); //if created then ASSISTments will not re-created.
+                                    DataAccess.setStudentOnBehalfOf(studentToken, studentOnBehalfOf);
 
                                     //set studentRef
                                     DataAccess.setStudentRef(studentToken, studentUsername, studentRef);

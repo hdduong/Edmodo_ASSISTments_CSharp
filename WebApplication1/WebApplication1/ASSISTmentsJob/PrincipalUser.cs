@@ -26,7 +26,7 @@ namespace connectToASSISTments_1.ASSISTmentsJob
             string password = Global.password;
             string firstName = teacher.first_name;
             string lastName = teacher.last_name;
-            string email = "1" + firstName + lastName + "@junk.com";
+            string email = "4" + firstName + lastName + "@junk.com";
             string username = email;
             string displayName = firstName + " " + lastName;
             string timeZone = "GMT-4";
